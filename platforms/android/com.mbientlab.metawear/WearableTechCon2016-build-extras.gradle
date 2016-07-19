@@ -1,0 +1,11 @@
+repositories {
+    ivy {
+        url "http://ivyrep.mbientlab.com"
+        layout "gradle"
+    }
+}
+
+// Retrieves version 2.5.9 of the Android API
+dependencies {
+    compile 'com.mbientlab:metawear:2.5.9'
+}

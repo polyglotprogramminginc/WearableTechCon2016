@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<plugin xmlns='http://apache.org/cordova/ns/plugins/1.0' xmlns:android='http://schemas.android.com/apk/res/android' id='com.mbientlab.metawear' version='0.2.15'>
+  <name>
+    MetaWear
+  </name>
+  <description>
+    This plugin wraps the Metawear IOS and Android API.
+  </description>
+  <license>
+    Apache 2.0
+  </license>
+  <keywords>
+    cordova,coolest
+  </keywords>
+  <repo/>
+  <issue/>
+  <js-module src='www/MWDevice.js' name='MWDevice'>
+    <clobbers target='metawear.mwdevice'/>
+  </js-module>
+  <!-- android -->
+  <platform name='android'>
+    <config-file target='res/xml/config.xml' parent='/*'>
+      <feature name='MWDevice'>
+        <param name='android-package' value='com.mbientlab.metawear.cordova.MWDevice'/>
+      </feature>
+    </config-file>
+    <config-file target='AndroidManifest.xml' parent='/manifest/application'>
+      <service android:name='com.mbientlab.metawear.MetaWearBleService'>
+      </service>
+    </config-file>
+    <config-file target='AndroidManifest.xml' parent='/manifest'>
+      <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    </config-file>
+    <framework src='src/android/build-extras.gradle' custom='true' type='gradleReference'/>
+    <source-file src='src/android/MWDevice.java' target-dir='src/com/mbientlab/metawear/cordova'/>
+    <source-file src='src/android/RSSI.java' target-dir='src/com/mbientlab/metawear/cordova'/>
+    <source-file src='src/android/BatteryLevel.java' target-dir='src/com/mbientlab/metawear/cordova'/>
+    <source-file src='src/android/SupportedModules.java' target-dir='src/com/mbientlab/metawear/cordova'/>
+    <source-file src='src/android/MWAccelerometer.java' target-dir='src/com/mbientlab/metawear/cordova'/>
+    <source-file src='src/android/MWMultiChannelTemperature.java' target-dir='src/com/mbientlab/metawear/cordova'/>
+    <source-file src='src/android/StepCounter.java' target-dir='src/com/mbientlab/metawear/cordova'/>
+    <source-file src='src/android/LEDModule.java' target-dir='src/com/mbientlab/metawear/cordova'/>
+    <source-file src='src/android/MWGyroscope.java' target-dir='src/com/mbientlab/metawear/cordova'/>
+    <source-file src='src/android/BluetoothScanner.java' target-dir='src/com/mbientlab/metawear/cordova'/>
+    <source-file src='src/android/GpioModule.java' target-dir='src/com/mbientlab/metawear/cordova'/>
+  </platform>
+  <platform name='ios'>
+    <framework src='Foundation.framework' autogen='true'/>
+    <source-file framework='true' src='src/ios/vendor/libMetawear-iOSAPI.a'/>
+    <header-file src='src/ios/vendor/headers/MBLConstants.h'/>
+    <header-file src='src/ios/vendor/headers/MBLMetaWear.h'/>
+    <header-file src='src/ios/vendor/headers/MBLMetaWearManager.h'/>
+    <header-file src='src/ios/vendor/headers/MBLAccelerometer.h'/>
+    <header-file src='src/ios/vendor/headers/MBLAccelerometerBMI160.h'/>
+    <header-file src='src/ios/vendor/headers/MBLAccelerometerBosch.h'/>
+    <header-file src='src/ios/vendor/headers/bmi160.h'/>
+    <header-file src='src/ios/vendor/headers/MBLAccelerometerData.h'/>
+    <header-file src='src/ios/vendor/headers/MBLGyro.h'/>
+    <header-file src='src/ios/vendor/headers/MBLGyroData.h'/>
+    <header-file src='src/ios/vendor/headers/MBLOrientationData.h'/>
+    <header-file src='src/ios/vendor/headers/MBLTemperature.h'/>
+    <header-file src='src/ios/vendor/headers/MBLExternalThermistor.h'/>
+    <header-file src='src/ios/vendor/headers/MBLData.h'/>
+    <header-file src='src/ios/vendor/headers/MBLNumericData.h'/>
+    <header-file src='src/ios/vendor/headers/MBLDataSample.h'/>
+    <header-file src='src/ios/vendor/headers/MBLEvent.h'/>
+    <header-file src='src/ios/vendor/headers/MBLRegister.h'/>
+    <header-file src='src/ios/vendor/headers/MBLModule.h'/>
+    <header-file src='src/ios/vendor/headers/BFTask+MBLExtensions.h'/>
+    <header-file src='src/ios/vendor/headers/MBLLED.h'/>
+    <header-file src='src/ios/vendor/headers/Bolts/Bolts.h'/>
+    <header-file src='src/ios/vendor/headers/Bolts/BoltsVersion.h'/>
+    <header-file src='src/ios/vendor/headers/Bolts/BFCancellationToken.h'/>
+    <header-file src='src/ios/vendor/headers/Bolts/BFCancellationTokenRegistration.h'/>
+    <header-file src='src/ios/vendor/headers/Bolts/BFCancellationTokenSource.h'/>
+    <header-file src='src/ios/vendor/headers/Bolts/BFExecutor.h'/>
+    <header-file src='src/ios/vendor/headers/Bolts/BFTask.h'/>
+    <header-file src='src/ios/vendor/headers/Bolts/BFTaskCompletionSource.h'/>
+    <source-file src='src/ios/vendor/headers/Bolts/Bolts.m'/>
+    <source-file src='src/ios/vendor/headers/Bolts/BFCancellationToken.m'/>
+    <source-file src='src/ios/vendor/headers/Bolts/BFCancellationTokenRegistration.m'/>
+    <source-file src='src/ios/vendor/headers/Bolts/BFCancellationTokenSource.m'/>
+    <source-file src='src/ios/vendor/headers/Bolts/BFExecutor.m'/>
+    <source-file src='src/ios/vendor/headers/Bolts/BFTask.m'/>
+    <source-file src='src/ios/vendor/headers/Bolts/BFTaskCompletionSource.m'/>
+    <header-file src='src/ios/MWDevice.h'/>
+    <framework src="CoreData.framework"/>
+    <source-file src='src/ios/MWDevice.m'/>
+    <header-file src='src/ios/MWSupportedModules.h'/>
+    <source-file src='src/ios/MWSupportedModules.m'/>
+    <header-file src='src/ios/RSSI.h'/>
+    <source-file src='src/ios/RSSI.m'/>
+    <header-file src='src/ios/LEDModule.h'/>
+    <source-file src='src/ios/LEDModule.m'/>
+    <header-file src='src/ios/BatteryLevel.h'/>
+    <source-file src='src/ios/BatteryLevel.m'/>
+    <header-file src='src/ios/MWAccelerometer.h'/>
+    <source-file src='src/ios/MWAccelerometer.m'/>
+    <header-file src='src/ios/MWMultiChannelTemperature.h'/>
+    <source-file src='src/ios/MWMultiChannelTemperature.m'/>
+    <header-file src='src/ios/StepCounter.h'/>
+    <source-file src='src/ios/StepCounter.m'/>
+    <header-file src='src/ios/MWGyroscope.h'/>
+    <source-file src='src/ios/MWGyroscope.m'/>
+    <config-file target="config.xml" parent="/*">
+      <feature name='MWDevice'>
+        <param name='ios-package' value='MWDevice'/>
+      </feature>
+    </config-file>
+ </platform>
+</plugin>

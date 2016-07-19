@@ -1,0 +1,62 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"MWDevice\"><param name=\"android-package\" value=\"com.mbientlab.metawear.cordova.MWDevice\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest/application": [
+                        {
+                            "xml": "<service android:name=\"com.mbientlab.metawear.MetaWearBleService\"></service>",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.polyglotprogramminginc.WearableTechCon2016"
+        },
+        "com.mbientlab.metawear": {
+            "PACKAGE_NAME": "com.polyglotprogramminginc.WearableTechCon2016"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/com.mbientlab.metawear/www/MWDevice.js",
+            "id": "com.mbientlab.metawear.MWDevice",
+            "clobbers": [
+                "metawear.mwdevice"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-whitelist": "1.2.2",
+        "com.mbientlab.metawear": "0.2.15"
+    }
+}
