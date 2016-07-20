@@ -69,6 +69,12 @@
 
                 <button id="Scan" title="" onclick="metawear.mwdevice.scanForDevices(scanSuccess, failure)">Scan For Devices</button>
                 <div id="ScanResults"></div>
+                <br>
+                <br>
+                <button id="Connect" title="" onclick="metawear.mwdevice.connect(uUIDAddress, success, failure)">Connect</button>
+                <br>
+                <br>
+                <button id="Disconnect" title="" onclick="metawear.mwdevice.disconnect()">Disconnect</button>
 
                 
             </div>
@@ -106,45 +112,45 @@
                                                                                                                                                                 $.mobile.defaultDialogTransition = "none";
                                                                                                                                                             });
         </script><script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script><script type="text/javascript" src="js/index.js"></script></body>
-        <script type="text/javascript" src="Device.js"></script>
-        <script type="text/javascript">
-         
-         app.initialize();
-         
-         var success = function(result){
-             alert("OK : " + result);
+    <script type="text/javascript" src="Device.js"></script>
+    <script type="text/javascript">
+     
+     app.initialize();
+     
+     var success = function(result){
+         alert("OK : " + result);
+     }
+     
+     var failure = function(result){
+         var message = "";
+         if(result.status !== undefined){
+             message = result.status;
+         }else{
+             message = result;
          }
-         
-         var failure = function(result){
-             var message = "";
-             if(result.status !== undefined){
-                 message = result.status;
-             }else{
-                 message = result;
-             }
-             console.log(result);
-             alert("ERROR : " + message);
-         }
+         console.log(result);
+         alert("ERROR : " + message);
+     }
 
-         var uUIDAddress = "";
+     var uUIDAddress = "";
 
-         var scanSuccess = function(result){
-             var returnString = "";
-             var uUIDRSSI= -999999;
-             for (var key in result) {
-                 if(uUIDAddress === "" || (uUIDAddress !== "" && Number(result[key].rssi) > uUIDRSSI)){
-                     console.log(result[key])
+     var scanSuccess = function(result){
+         var returnString = "";
+         var uUIDRSSI= -999999;
+         for (var key in result) {
+             if(uUIDAddress === "" || (uUIDAddress !== "" && Number(result[key].rssi) > uUIDRSSI)){
+                 console.log(result[key])
                      uUIDAddress = result[key].address;
-                     uUIDRSSI = result[key].rssi
-                 }
-                 returnString = returnString + " " +
-                                      result[key].address + " -> " + result[key].rssi + ", ";
+                 uUIDRSSI = result[key].rssi
              }
-             console.log(result);
-             console.log(returnString);
-             $("#ScanResults").text(returnString);
+             returnString = returnString + " " +
+                                  result[key].address + " -> " + result[key].rssi + ", ";
          }
+         console.log(result);
+         console.log(returnString);
+         $("#ScanResults").text(returnString);
+     }
 
-        </script>
+    </script>
 
 </html>
