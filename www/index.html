@@ -93,6 +93,14 @@
                 <br>
                 <br>
                 <button id="Stop LED" title="" onclick="metawear.mwdevice.stopLED()">Stop LED</button>
+                <br>
+                <br>
+                <button id="Start Accelerometer" title="" onclick="metawear.mwdevice.startAccelerometer(accelerometerSuccess, failure)">Start Accelerometer</button>
+                <br>
+                <br>
+                <button id="Stop Accelerometer" title="" onclick="metawear.mwdevice.stopAccelerometer()">Stop Accelerometer</button>
+                <div id="accelerometer"></div>
+
                 
             </div>
             <!-- end of page 1 content -->
@@ -167,6 +175,13 @@
          console.log(returnString);
          $("#ScanResults").text(returnString);
      }
+
+     var accelerometerSuccess = function(result){
+         console.log(result);
+         $("#accelerometer").text(
+             'x: ' + result.x + '  y: ' + result.y + ' z: ' + result.z
+         );
+     };
 
     </script>
 
