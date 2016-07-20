@@ -100,7 +100,12 @@
                 <br>
                 <button id="Stop Accelerometer" title="" onclick="metawear.mwdevice.stopAccelerometer()">Stop Accelerometer</button>
                 <div id="accelerometer"></div>
-
+                <br>
+                <br>
+                <button id="Read Temperature" title="" onclick="metawear.mwdevice.readTemperature(temperatureSuccess, failure, {sensor: 'R_NRF_DIE'})">Read Temperature</button>
+                <br>
+                <br>
+                <div id="temperature"></div>
                 
             </div>
             <!-- end of page 1 content -->
@@ -180,6 +185,13 @@
          console.log(result);
          $("#accelerometer").text(
              'x: ' + result.x + '  y: ' + result.y + ' z: ' + result.z
+         );
+     };
+
+     var temperatureSuccess = function(result){
+         console.log(result);
+         $("#temperature").text(
+             'temperature: ' + result.temperature 
          );
      };
 
