@@ -3,6 +3,7 @@ package com.mbientlab.metawear.cordova;
 import android.util.Log;
 import android.os.Handler;
 import org.apache.cordova.PluginResult;
+
 import com.mbientlab.metawear.cordova.MWDevice;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;

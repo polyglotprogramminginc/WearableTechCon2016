@@ -19,6 +19,7 @@ import java.util.HashMap;
 import static com.mbientlab.metawear.MetaWearBoard.ConnectionStateHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
+import android.Manifest;
 
 import android.os.IBinder;
 import com.mbientlab.metawear.MetaWearBleService;
@@ -125,6 +126,7 @@ public class MWDevice extends CordovaPlugin implements ServiceConnection{
     }
 
     public boolean execute(final String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        cordova.requestPermission(this, 0, Manifest.permission.ACCESS_FINE_LOCATION);
         final int duration = Toast.LENGTH_SHORT;
         // Shows a toast
         Log.v(TAG,"mwDevice received:"+ action);
