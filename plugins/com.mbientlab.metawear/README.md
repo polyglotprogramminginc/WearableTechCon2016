@@ -93,6 +93,60 @@ Reads the Battery Level value you are currently getting from the board.  The Bat
 mbientlab.mwdevice.readBatteryLevel(successCallback, failureCallback);
 ```
 
+###playLED
+
+Plays a pattern on the LED on a per channel basis.  For example,  the following command produces a blue (breathing) type of flash on the board.
+
+```
+metawear.mwdevice.playLED({channel:"BLUE",
+                           riseTime: 750, pulseDuration: 2000,
+                           repeatCount: -1, highTime: 500,
+                           fallTime: 750, lowIntensity: 0,
+                           highIntensity: 31})
+```
+
+###stopLED
+
+Turns off any LED functions that were started withe the playLED method.
+
+```
+mbientlab.mwdevice.stopLED();
+```
+
+###readTemperature
+
+Performs a one time read from a thermistor.  It takes three arguments.  A success callback,  a failure callback and a hash object.  Currently the only supported parameter is called 'sensor'.
+
+If you have a MetaWear C or R-Pro your sensor options are: 
+*  PRO_BMP_280 - thermistor on the BMP 280 sensor.
+*  PRO_NRF_DIE - the nordic chip on die sensor.
+*  PRO_ON_BOARD_THERMISTOR - A separate on board sensor.
+
+If you have the MetaWear R your options are:
+*  R_NRF_DIE - the nordic chip on die sensor.
+
+```
+var temperatureSuccess = function(result){
+    console.log(result);
+    $("#temperature").text(
+        'temperature: ' + result.temperature 
+    );
+};
+
+var failure = function(result){
+    var message = "";
+    if(result.status !== undefined){
+      message = result.status;
+    }else{
+      message = result;
+    }
+    console.log(result);
+    alert("ERROR : " + message);
+}
+
+metawear.mwdevice.readTemperature(temperatureSuccess, failure, {sensor: 'R_NRF_DIE'})
+```
+
 ###startAccelerometer
 
 Starts the accelerometer on the board and streams the data to the callback until it is stopped.  The callback result is an object with x,y and z values from the accelerometer.
