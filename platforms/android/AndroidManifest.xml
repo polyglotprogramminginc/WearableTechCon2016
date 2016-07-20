@@ -11,6 +11,6 @@
         </activity>
         <service android:name="com.mbientlab.metawear.MetaWearBleService" />
     </application>
-    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="23" />
+    <uses-sdk android:minSdkVersion="18" android:targetSdkVersion="23" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 </manifest>
