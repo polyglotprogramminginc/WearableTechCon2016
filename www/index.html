@@ -75,7 +75,21 @@
                 <br>
                 <br>
                 <button id="Disconnect" title="" onclick="metawear.mwdevice.disconnect()">Disconnect</button>
-
+                <br>
+                <br>
+                <button id="Read Rssi" title="" onclick="metawear.mwdevice.readRssi(success, failure)">Read RSSI</button>
+                <br>
+                <br>
+                <button id="Play LED" title=""
+                        onclick="metawear.mwdevice.playLED({channel: 'BLUE',
+                                 riseTime: 750,
+                                 pulseDuration: 2000,
+                                 repeatCount: -1, highTime: 500,
+                                 fallTime: 750, lowIntensity: 0,
+                                 highIntensity: 31})">Play LED</button>
+                <br>
+                <br>
+                <button id="Stop LED" title="" onclick="metawear.mwdevice.stopLED()">Stop LED</button>
                 
             </div>
             <!-- end of page 1 content -->
